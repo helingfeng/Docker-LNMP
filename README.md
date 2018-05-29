@@ -17,9 +17,9 @@ $ git clone https://github.com/helingfeng/Docker-LNMP.git
 ```
     
 #### 4. 启动服务
-
+x
 ```
-$ cd dnmp
+$ cd Docker-LNMP
 $ docker-compose up -d
 ```
 
