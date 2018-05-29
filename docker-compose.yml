@@ -14,7 +14,7 @@ services:
       - ./log/nginx/:/var/log/nginx/:rw
     links:
       - php72:fpm
-      - php56:fpm56
+#      - php56:fpm56
     networks:
       docker_net:
         ipv4_address: 172.100.0.2
@@ -35,21 +35,21 @@ services:
       docker_net:
         ipv4_address: 172.100.0.3
 
-  php56:
-    build: ./php/php56/
-    expose:
-      - "9000"
-    volumes:
-      - ./www/:/var/www/html/:rw
-      - ./conf/php/php.ini:/usr/local/etc/php/php.ini:ro
-      - ./conf/php/php-fpm.d/www.conf:/usr/local/etc/php-fpm.d/www.conf:rw
-      - ./log/php-fpm/:/var/log/php-fpm/:rw
-    links:
-      - mysql:mysql
-      - redis:redis-docker
-    networks:
-      docker_net:
-        ipv4_address: 172.100.0.4
+#  php56:
+#    build: ./php/php56/
+#    expose:
+#      - "9000"
+#    volumes:
+#      - ./www/:/var/www/html/:rw
+#      - ./conf/php/php.ini:/usr/local/etc/php/php.ini:ro
+#      - ./conf/php/php-fpm.d/www.conf:/usr/local/etc/php-fpm.d/www.conf:rw
+#      - ./log/php-fpm/:/var/log/php-fpm/:rw
+#    links:
+#      - mysql:mysql
+#      - redis:redis-docker
+#    networks:
+#      docker_net:
+#        ipv4_address: 172.100.0.4
 
   mysql:
     image: mysql:5.6
