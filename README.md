@@ -35,6 +35,4 @@ $ docker-compose up -d
 - http://127.0.0.1/
 - https://127.0.0.1/
 
-![demo](./demo.png)
-
-done.
+![demo](./demo3.png)
