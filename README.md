@@ -13,7 +13,7 @@
 #### 2. 下载代码
 
 ```
-$ git clone https://github.com/helingfeng/dnmp.git
+$ git clone https://github.com/helingfeng/Docker-LNMP.git
 ```
     
 #### 4. 启动服务
