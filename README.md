@@ -31,8 +31,6 @@ $ docker-compose up
 - http://127.0.0.1/
 - https://127.0.0.1/
 
-看到`PHP`版本信息输出
-
 ![demo](./demo.png)
 
 done.
