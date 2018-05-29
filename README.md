@@ -20,7 +20,7 @@ $ git clone https://github.com/helingfeng/Docker-LNMP.git
 
 ```
 $ cd dnmp
-$ docker-compose up
+$ docker-compose up -d
 ```
 
 第一次启用服务，需要下载并编译各种工具，请耐心等待一段时间
