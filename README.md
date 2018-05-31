@@ -36,3 +36,36 @@ $ docker-compose up -d
 - https://127.0.0.1/
 
 ![demo](./demo3.png)
+
+
+## 问题与解答 ？
+
+#### 1. `workspace`工作目录映射
+
+```markdown
+volumes:
+      - ./www/:/var/www/html/:rw
+```
+
+将 `./www/` 修改为你的 `workspace` 工作目录，注意 `nginx` `php-fpm` 两个应用都需要修改
+
+#### 2. 多个项目系统，采用虚拟域名，如何相互之间访问
+
+`php-fpm` 应用添加 `extra_hosts` 指向 `nginx` 应用
+
+```markdown
+extra_hosts:
+      - www.demo1.com:172.100.0.2
+```
+这里的 `172.100.0.2` 表示 `nginx` 应用`ip`
+
+#### 3. 如何切换`php`版本
+
+`nginx` 配置文件 `.conf` 选项 `fastcgi_pass` 参数定义
+
+```markdown
+fastcgi_pass   fpm56:9000;
+或者
+fastcgi_pass   fpm72:9000;
+
+```
