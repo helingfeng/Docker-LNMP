@@ -25,7 +25,7 @@ $ docker-compose up -d
 
 第一次启用服务，需要下载并编译各种工具，请耐心等待一段时间
 
-![demo](./demo4.png)
+![demo](./demo2.png)
 
 表示成功启动服务
 
@@ -147,4 +147,4 @@ xdebug.remote_connect_back = 0
 
 注意：配置远程目录映射
 
-![](demo4.png)
+![](./demo4.png)
