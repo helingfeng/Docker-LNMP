@@ -109,7 +109,9 @@ xdebug.idekey = PHPSTORM
 
 ##### 配置 `PhpStorm`
 
-端口一致即可，上述我配置的是`9005`
+端口一致即可，上述我配置的是`9005`端口
+
+参看一下这个文档：https://www.jianshu.com/p/e9ad4c99d118
 
 ##### 开启调试，出现异常
 
