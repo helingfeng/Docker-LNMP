@@ -25,8 +25,8 @@ services:
       - "9000"
     volumes:
       - ./www/:/var/www/html/:rw
-      - ./conf/php/php.ini:/usr/local/etc/php/php.ini:ro
-      - ./conf/php/php-fpm.d/www.conf:/usr/local/etc/php-fpm.d/www.conf:rw
+      - ./conf/php/php72.ini:/usr/local/etc/php/php.ini:ro
+      - ./conf/php/php-fpm.d/www72.conf:/usr/local/etc/php-fpm.d/www.conf:rw
       - ./log/php-fpm/:/var/log/php-fpm/:rw
     links:
       - mysql:mysql
@@ -41,8 +41,8 @@ services:
 #      - "9000"
 #    volumes:
 #      - ./www/:/var/www/html/:rw
-#      - ./conf/php/php.ini:/usr/local/etc/php/php.ini:ro
-#      - ./conf/php/php-fpm.d/www.conf:/usr/local/etc/php-fpm.d/www.conf:rw
+#      - ./conf/php/php56.ini:/usr/local/etc/php/php.ini:ro
+#      - ./conf/php/php-fpm.d/www56.conf:/usr/local/etc/php-fpm.d/www.conf:rw
 #      - ./log/php-fpm/:/var/log/php-fpm/:rw
 #    links:
 #      - mysql:mysql
