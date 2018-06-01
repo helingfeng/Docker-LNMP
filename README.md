@@ -75,7 +75,9 @@ fastcgi_pass   fpm72:9000;
 ##### 添加扩展
 
 以 `php72` 应用为例，首先需要修改 `Dockerfile` 文件，安装 `xdebug` 扩展；
-`PECL extensions` 安装说明可以在官网找到：https://hub.docker.com/_/php/
+
+`PECL extensions` 安装说明可以在官网找到：
+https://hub.docker.com/_/php/
 
 ```markdown
 RUN pecl install xdebug-2.6.0 \
@@ -98,6 +100,7 @@ xdebug.remote_port = 9005
 xdebug.remote_handler = dbgp
 xdebug.remote_autostart = on
 xdebug.remote_connect_back = on
+; 配置这个可以查看调试日志
 xdebug.remote_log = /var/log/php-fpm/xdebug_remote.log
 ;xdebug.trace_output_dir = "/var/log/php-fpm/xdebug/"
 ;xdebug.profiler_output_dir = "/var/log/php-fpm/xdebug/"
@@ -110,7 +113,9 @@ xdebug.idekey = PHPSTORM
 
 ##### 开启调试，出现异常
 
-设置断点，点击开始调试时，并没有成功进入调试模式。查看 `xdebug_remote.log` 日志，报错如下
+设置断点，点击开始调试时，并没有成功进入调试模式。
+
+查看 `xdebug_remote.log` 日志，报错如下
 
 ```markdown
 Log opened at 2018-06-01 13:51:09
