@@ -135,6 +135,7 @@ https://forums.docker.com/t/solved-how-to-setup-xdebug-and-phpstorm/13641/2
 https://stackoverflow.com/questions/44283171/using-xdebug-through-docker-container-in-phpstorm?rq=1
 
 ```markdown
+; 这个地址为主机ip,通过`ifconfig`查看
 xdebug.remote_host = 192.168.1.123
 xdebug.remote_connect_back = 0
 ```
