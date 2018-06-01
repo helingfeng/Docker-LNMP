@@ -83,7 +83,7 @@ https://hub.docker.com/_/php/
 RUN pecl install xdebug-2.6.0 \
     && docker-php-ext-enable xdebug
 ```
-重新构建镜像 `php62`
+重新构建 `php72` 镜像（删除镜像，启动`docker-compose`）
 
 ##### 配置 `xdebug`
 
