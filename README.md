@@ -47,7 +47,7 @@ volumes:
       - ./www/:/var/www/html/:rw
 ```
 
-将 `./www/` 修改为你的 `workspace` 工作目录，注意 `nginx` `php-fpm` 两个应用都需要修改
+将 `./www/` 修改为你的 `workspace` 工作目录，可以修改`.env`文件
 
 #### 2. 多个项目系统，采用虚拟域名，如何相互之间访问
 
