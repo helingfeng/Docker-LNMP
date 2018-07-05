@@ -73,6 +73,17 @@ services:
       docker_net:
         ipv4_address: ${REDIS_IP}
 
+  portainer:
+    image: portainer/portainer:latest
+    ports:
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./portainer/:/data
+    networks:
+      docker_net:
+        ipv4_address: ${PORTAINER_IP}
+
 networks:
   docker_net:
     driver: bridge

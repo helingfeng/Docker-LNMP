@@ -2,6 +2,8 @@
 
 只要你敢尝试一次，就再也不会拒绝它
 
+[demo-portainer.jpg](demo-portainer.jpg)
+
 ### 第一步，安装依赖工具
 
 - Git  // 不懂装，我也没办法
@@ -38,6 +40,11 @@ Creating docker-lnmp_nginx_1 ... done
 - https://127.0.0.1/  （由于证书不安全，所以需要点击继续访问）
 
 页面将会输出:phpinfo
+
+
+## 访问 Docker GUI 管理工具
+
+- http://127.0.0.1:9000
 
 ## 更多使用说明
 
