@@ -2,7 +2,7 @@
 
 只要你敢尝试一次，就再也不会拒绝它
 
-[demo-portainer.jpg](demo-portainer.jpg)
+![demo-portainer.jpg](demo-portainer.jpg)
 
 ### 第一步，安装依赖工具
 
