@@ -1,6 +1,6 @@
 FROM php:7.2-fpm
 
-COPY ./sources.list.stretch /etc/apt/sources.list
+#COPY ./sources.list.stretch /etc/apt/sources.list
 
 # Extensions: ctype, dom, fileinfo, ftp, hash, iconv, json, pdo, pdo_sqlite, session,
 # tokenizer, simplexml, xml, xmlreader, xmlwriter and phar are bundled and compiled into
