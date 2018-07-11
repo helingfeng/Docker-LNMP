@@ -2,6 +2,8 @@
 
 只要你敢尝试一次，就再也不会拒绝它
 
+Docker 使用客户端-服务器 (C/S) 架构模式，使用远程API来管理和创建Docker容器。Docker 容器通过 Docker 镜像来创建。容器与镜像的关系类似于面向对象编程中的对象与类。
+
 ![demo-portainer.jpg](demo-portainer.jpg)
 
 ### 第一步，安装依赖工具
