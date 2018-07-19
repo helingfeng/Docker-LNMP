@@ -28,12 +28,14 @@ $ docker-compose up -d   // 容器编排命令
 第一次启用服务，需要下载并编译各种工具，请耐心等待一段时间；控制台输出下面信息，表示服务启动完成
 
 ```markdown
-➜  Docker-LNMP git:(master) docker-compose up -d      
+➜  Docker-LNMP git:(master) ✗ docker-compose up -d
 Creating network "docker-lnmp_docker_net" with driver "bridge"
-Creating docker-lnmp_redis_1 ... done
-Creating docker-lnmp_mysql_1 ... done
-Creating docker-lnmp_php72_1 ... done
-Creating docker-lnmp_nginx_1 ... done
+Creating docker-lnmp_portainer_1 ... done
+Creating docker-lnmp_redis_1     ... done
+Creating docker-lnmp_mysql_1     ... done
+Creating docker-lnmp_php72_1     ... done
+Creating docker-lnmp_php56_1     ... done
+Creating docker-lnmp_nginx_1     ... done
 ```
 
 ### 第四步，测试服务访问
