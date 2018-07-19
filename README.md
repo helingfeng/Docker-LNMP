@@ -43,15 +43,17 @@ Creating docker-lnmp_nginx_1 ... done
 
 页面将会输出:phpinfo
 
-## Google 代理访问
+
+## 访问 Docker GUI 管理工具
+
+- http://127.0.0.1:9000
+
+## Google 访问（代理翻墙）
 
 - http://127.0.0.1:8080
 
 ![google](google.png)
 
-## 访问 Docker GUI 管理工具
-
-- http://127.0.0.1:9000
 
 ## 更多使用说明
 
