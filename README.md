@@ -38,11 +38,16 @@ Creating docker-lnmp_nginx_1 ... done
 
 ### 第四步，测试服务访问
 
-- http://127.0.0.1/ （强制跳转 https）
+- http://127.0.0.1/ （可配置强制跳转 https）
 - https://127.0.0.1/  （由于证书不安全，所以需要点击继续访问）
 
 页面将会输出:phpinfo
 
+## Google 代理访问
+
+- http://127.0.0.1:8080
+
+![google](google.png)
 
 ## 访问 Docker GUI 管理工具
 
