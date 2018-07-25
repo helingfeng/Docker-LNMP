@@ -43,8 +43,6 @@ Creating docker-lnmp_nginx_1     ... done
 - http://127.0.0.1/ （可配置强制跳转 https）
 - https://127.0.0.1/  （由于证书不安全，所以需要点击继续访问）
 
-页面将会输出:phpinfo
-
 
 ## 访问 Docker GUI 管理工具
 
