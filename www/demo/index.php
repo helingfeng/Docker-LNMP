@@ -1,2 +1,2 @@
 <?php
-    echo phpinfo();
+    echo "<h1>Hello Docker LNMP.</h1>";
