@@ -1,0 +1,13 @@
+version: "2"
+
+options:
+  verbose: false
+syncs:
+  www-docker-sync: # name of the intermediary sync volume
+    compose-dev-file-path: 'docker-compose.sync.yml' # docker-compose override file
+
+    src: '${WORKSPACES}' # host source directory
+    sync_userid: 1000 # giving permissions to www-data user (as defined in nginx and php-fpm Dockerfiles)
+    sync_strategy: 'native_osx' # for osx use 'native_osx', for windows use 'unison'
+
+    sync_excludes: ['.idea', '.git/', '.DS_Store',] # ignored directories
