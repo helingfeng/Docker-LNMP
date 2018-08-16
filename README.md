@@ -54,9 +54,3 @@ Creating docker-lnmp_nginx_1     ... done
 
 ![google](google.png)
 
-
-## 更多使用说明
-
-- [查看使用文档](wiki.md)
-- [docker_practice.pdf](docker_practice.pdf)
-
