@@ -2,7 +2,7 @@
 
 ### 第一步，安装依赖工具
 
-- Git  // 不懂装，我也没办法
+- Git  // brew install git
 - Docker [https://docs.docker.com/install/]
 - Docker-compose [https://docs.docker.com/compose/install/#install-compose]
 
