@@ -1,6 +1,7 @@
 FROM php:7.2-cli
 
-# COPY ./sources.list.stretch /etc/apt/sources.list
+#  https://www.awaimai.com/2120.html 中科大源正常
+COPY ./sources.list.stretch /etc/apt/sources.list
 
 # Extensions: ctype, dom, fileinfo, ftp, hash, iconv, json, pdo, pdo_sqlite, session,
 # tokenizer, simplexml, xml, xmlreader, xmlwriter and phar are bundled and compiled into
@@ -15,6 +16,9 @@ FROM php:7.2-cli
 
 # --allow-downgrades -y zlib1g=1:1.2.8.dfsg-5 libz-dev
 # --allow-downgrades -y libxml2=2.9.4+dfsg1-2.2+deb9u2
+
+# ENV https_proxy http://127.0.0.1:1087
+# ENV http_proxy http://127.0.0.1:1087
 
 RUN apt-get update \
     && apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng-dev \
@@ -108,4 +112,3 @@ RUN pecl install swoole \
 
 # Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer
-

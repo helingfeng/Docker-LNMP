@@ -72,7 +72,7 @@ docker run -it --rm --name www-laravel \
     -v "$PWD":/usr/workspaces/project \
     -w /usr/workspaces/project \
     php2-cli \
-    php aritsan cache:clear
+    php artisan cache:clear
     
 # php artisan serve
 docker run -it --rm --name www-laravel \
@@ -80,5 +80,5 @@ docker run -it --rm --name www-laravel \
     -v "$PWD":/usr/workspaces/project \
     -w /usr/workspaces/project \
     php2-cli \
-    php artisan serve
+    php artisan serve --host=0.0.0.0 --port=8001
 ```
