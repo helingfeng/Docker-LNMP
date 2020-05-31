@@ -112,3 +112,13 @@ RUN pecl install swoole \
 
 # Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer
+
+COPY fswatch-1.11.2.tar.gz .
+
+RUN tar -xvzf fswatch-1.11.2.tar.gz \
+    && cd fswatch-1.11.2 \
+    && ./configure \
+    && make \
+    && make install
+
+RUN ldconfig

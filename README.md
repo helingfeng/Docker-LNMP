@@ -82,3 +82,16 @@ docker run -it --rm --name www-laravel \
     php2-cli \
     php artisan serve --host=0.0.0.0 --port=8001
 ```
+
+- 启动 `Laravel-Swoole` 示例
+
+```
+# 配置 host 要修改为 0.0.0.0
+# php artisan serve
+docker run -it --rm --name www-laravel \
+    -p 1215:1215 \
+    -v "$PWD":/usr/workspaces/project \
+    -w /usr/workspaces/project \
+    php2-cli \
+    php artisan swoole:http start
+```
