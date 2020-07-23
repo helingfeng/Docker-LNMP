@@ -113,6 +113,11 @@ RUN pecl install swoole \
 # Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer
 
+RUN apt-get install -y git
+
+RUN pecl install redis-3.1.4 \
+    && docker-php-ext-enable redis
+
 #COPY fswatch-1.11.2.tar.gz .
 #
 #RUN tar -xvzf fswatch-1.11.2.tar.gz \
