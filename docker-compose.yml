@@ -68,6 +68,25 @@ services:
       docker_net:
         ipv4_address: ${MYSQL_IP}
 
+  mysql8:
+    image: mysql:latest
+    ports:
+      - "3307:3306"
+    command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ./conf/mysql8/my.cnf:/etc/mysql/my.cnf
+      - ./mysql8/:/var/lib/mysql
+      - ./log/mysql8/:/var/log/mysql/:rw,cached
+    environment:
+      TZ: 'Asia/Shanghai'
+      MYSQL_ROOT_PASSWORD: '123456'
+      MYSQL_DATABASE: 'db'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'pass'
+    networks:
+      docker_net:
+        ipv4_address: ${MYSQL8_IP}
+
   redis:
     image: redis:latest
     ports:
