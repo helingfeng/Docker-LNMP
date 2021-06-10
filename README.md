@@ -124,7 +124,7 @@ redis-cli -a CKuTkdUAT_HManA8 --cluster create 175.100.0.61:6381 \
 ```shell
 redis-cli -p 6381 -a CKuTkdUAT_HManA8 -c
 127.0.0.1:6381> get key
--> Redirected to slot [12539] located at 172.100.0.63:6383
+-> Redirected to slot [12539] located at 175.100.0.63:6383
 (nil)
 172.100.0.63:6383> 
 ```
