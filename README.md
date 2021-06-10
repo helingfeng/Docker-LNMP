@@ -95,3 +95,36 @@ docker run -it --rm --name www-laravel \
     php2-cli \
     php artisan swoole:http start
 ```
+
+### Redis 集群配置
+
+编排容器 Redis1-Redis6 使用 redis-cluster.yml 配置文件
+```shell
+docker-compose -f docker-compose-redis-cluster.yml up -d
+```
+
+进入 Redis1 命令行模式，执行创建集群命令
+```shell
+redis-cli -a CKuTkdUAT_HManA8 --cluster create 172.100.0.61:6381 \
+  172.100.0.62:6382 \
+  172.100.0.63:6383 \
+  172.100.0.64:6384 \
+  172.100.0.65:6385 \
+  172.100.0.66:6386 \
+  --cluster-replicas 1
+
+...
+[OK] All nodes agree about slots configuration.
+>>> Check for open slots...
+>>> Check slots coverage...
+[OK] All 16384 slots covered.
+```
+
+使用 Redis-Cli 客户端操作 Redis 集群
+```shell
+redis-cli -p 6381 -a CKuTkdUAT_HManA8 -c
+127.0.0.1:6381> get key
+-> Redirected to slot [12539] located at 172.100.0.63:6383
+(nil)
+172.100.0.63:6383> 
+```
