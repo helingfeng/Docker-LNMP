@@ -87,4 +87,4 @@ networks:
       driver: default
       config:
         -
-          subnet: "${DOCKER_SUBNET}"
+          subnet: "${DOCKER_CLUSTER_SUBNET}"

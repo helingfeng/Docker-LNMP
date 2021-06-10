@@ -105,12 +105,12 @@ docker-compose -f docker-compose-redis-cluster.yml up -d
 
 进入 Redis1 命令行模式，执行创建集群命令
 ```shell
-redis-cli -a CKuTkdUAT_HManA8 --cluster create 172.100.0.61:6381 \
-  172.100.0.62:6382 \
-  172.100.0.63:6383 \
-  172.100.0.64:6384 \
-  172.100.0.65:6385 \
-  172.100.0.66:6386 \
+redis-cli -a CKuTkdUAT_HManA8 --cluster create 175.100.0.61:6381 \
+  175.100.0.62:6382 \
+  175.100.0.63:6383 \
+  175.100.0.64:6384 \
+  175.100.0.65:6385 \
+  175.100.0.66:6386 \
   --cluster-replicas 1
 
 ...
