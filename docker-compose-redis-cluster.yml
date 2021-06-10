@@ -1,0 +1,90 @@
+version: '3'
+
+services:
+
+  redis1:
+    image: daocloud.io/library/redis:6.0.4
+    container_name: redis-1
+    restart: always
+    ports:
+      - "6381:6381"
+    volumes:
+      - ./conf/redis/redis-1/redis.conf:/usr/local/etc/redis/redis.conf
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    networks:
+      docker_net:
+        ipv4_address: ${REDIS1_IP}
+  # redis2配置
+  redis2:
+    image: daocloud.io/library/redis:6.0.4
+    container_name: redis-2
+    restart: always
+    ports:
+      - "6382:6382"
+    volumes:
+      - ./conf/redis/redis-2/redis.conf:/usr/local/etc/redis/redis.conf
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    networks:
+      docker_net:
+        ipv4_address: ${REDIS2_IP}
+  # redis3配置
+  redis3:
+    image: daocloud.io/library/redis:6.0.4
+    container_name: redis-3
+    restart: always
+    ports:
+      - "6383:6383"
+    volumes:
+      - ./conf/redis/redis-3/redis.conf:/usr/local/etc/redis/redis.conf
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    networks:
+      docker_net:
+        ipv4_address: ${REDIS3_IP}
+  # redis4配置
+  redis4:
+    image: daocloud.io/library/redis:6.0.4
+    container_name: redis-4
+    restart: always
+    ports:
+      - "6384:6384"
+    volumes:
+      - ./conf/redis/redis-4/redis.conf:/usr/local/etc/redis/redis.conf
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    networks:
+      docker_net:
+        ipv4_address: ${REDIS4_IP}
+  # redis5配置
+  redis5:
+    image: daocloud.io/library/redis:6.0.4
+    container_name: redis-5
+    restart: always
+    ports:
+      - "6385:6385"
+    volumes:
+      - ./conf/redis/redis-5/redis.conf:/usr/local/etc/redis/redis.conf
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    networks:
+      docker_net:
+        ipv4_address: ${REDIS5_IP}
+  # redis6配置
+  redis6:
+    image: daocloud.io/library/redis:6.0.4
+    container_name: redis-6
+    restart: always
+    ports:
+      - "6386:6386"
+    volumes:
+      - ./conf/redis/redis-6/redis.conf:/usr/local/etc/redis/redis.conf
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    networks:
+      docker_net:
+        ipv4_address: ${REDIS6_IP}
+
+networks:
+  docker_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        -
+          subnet: "${DOCKER_SUBNET}"
