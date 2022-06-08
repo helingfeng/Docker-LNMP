@@ -31,9 +31,6 @@ services:
       - ./conf/php/php72.ini:/usr/local/etc/php/php.ini:ro,cached
       - ./conf/php/php-fpm.d/www72.conf:/usr/local/etc/php-fpm.d/www.conf:rw,cached
       - ./log/php-fpm/:/var/log/php-fpm/:rw,cached
-    links:
-      - mysql:mysql
-      - redis:redis
     networks:
       docker_net:
         ipv4_address: ${PHP72_IP}
@@ -47,29 +44,26 @@ services:
       - ./conf/php/php56.ini:/usr/local/etc/php/php.ini:ro,cached
       - ./conf/php/php-fpm.d/www56.conf:/usr/local/etc/php-fpm.d/www.conf:rw,cached
       - ./log/php-fpm/:/var/log/php-fpm/:rw,cached
-    links:
-      - mysql:mysql
-      - redis:redis
     networks:
       docker_net:
         ipv4_address: ${PHP56_IP}
 
-  mysql:
-    image: mysql:5.6
-    ports:
-      - "3306:3306"
-    volumes:
-      - ./conf/mysql/my.cnf:/etc/mysql/my.cnf:ro,cached
-      - ./mysql/:/var/lib/mysql/:rw,cached
-      - ./log/mysql/:/var/log/mysql/:rw,cached
-    environment:
-      MYSQL_ROOT_PASSWORD: "123456"
-    networks:
-      docker_net:
-        ipv4_address: ${MYSQL_IP}
+#  mysql:
+#    image: mysql:5.6
+#    ports:
+#      - "3306:3306"
+#    volumes:
+#      - ./conf/mysql/my.cnf:/etc/mysql/my.cnf:ro,cached
+#      - ./mysql/:/var/lib/mysql/:rw,cached
+#      - ./log/mysql/:/var/log/mysql/:rw,cached
+#    environment:
+#      MYSQL_ROOT_PASSWORD: "123456"
+#    networks:
+#      docker_net:
+#        ipv4_address: ${MYSQL_IP}
 
   mysql8:
-    image: mysql:latest
+    image: mysql:8.0.29-oracle
     ports:
       - "3307:3306"
     command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
