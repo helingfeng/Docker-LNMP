@@ -1,0 +1,51 @@
+version: '3'
+services:
+  oap:
+    image: apache/skywalking-oap-server:8.9.1
+    container_name: oap
+    restart: always
+    ports:
+      - 11800:11800 # agent 上报数据的端口，这是 gRPC 端口
+      - 12800:12800 # ui 读取数据的端口， 这是 http 端口
+    environment:
+      - TZ=Asia/Shanghai
+  skywaling-ui:
+    image: apache/skywalking-ui:8.9.1
+    container_name: ui
+    depends_on:
+      - oap
+    links:
+      - oap
+    ports:
+      - 8088:8080
+    environment:
+      - SW_OAP_ADDRESS=http://192.168.83.196:12800
+      - TZ=Asia/Shanghai
+  skywalking-php1:
+    image: skyapm/skywalking-php:v4.2.0-7.4-fpm-alpine
+    container_name: agent-php1
+    volumes:
+      - ./skywalking-php/php.ini:/usr/local/etc/php/conf.d/ext-skywalking.ini
+      - ./skywalking-php/index.php:/var/www/html/index.php
+    depends_on:
+      - oap
+    links:
+      - oap
+    ports:
+      - 8010:8080
+    environment:
+      - SW_OAP_ADDRESS=oap:11800
+  skywalking-php2:
+    image: skyapm/skywalking-php:v4.2.0-7.4-fpm-alpine
+    container_name: agent-php2
+    volumes:
+      - ./skywalking-php1/php.ini:/usr/local/etc/php/conf.d/ext-skywalking.ini
+      - ./skywalking-php1/index.php:/var/www/html/index.php
+    depends_on:
+      - oap
+    links:
+      - oap
+    ports:
+      - 8011:8080
+    environment:
+      - SW_OAP_ADDRESS=oap:11800
