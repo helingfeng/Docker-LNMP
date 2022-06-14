@@ -1,53 +1,42 @@
-version: '3'
+version: '3.1'
 
 services:
 
-  nginx:
-    image: nginx:alpine
-    ports:
-      - "80:80"
-      - "8080:8080"
-      - "443:443"
-    volumes:
-      - ${WORKSPACES}:/var/www/html/:rw,cached
-      - ./conf/nginx/conf.d:/etc/nginx/conf.d/:ro,cached
-      - ./conf/nginx/nginx.conf:/etc/nginx/nginx.conf:ro,cached
-      - ./log/nginx/:/var/log/nginx/:rw,cached
-    links:
-      - php72:fpm72
-      - php56:fpm56
-    environment:
-      - TZ=Asia/Shanghai
-    networks:
-      docker_net:
-        ipv4_address: ${NGINX_IP}
-
-  php72:
-    build: ./php/php72/
-    expose:
-      - "9000"
-    volumes:
-      - ${WORKSPACES}:/var/www/html/:rw,cached
-      - ./conf/php/php72.ini:/usr/local/etc/php/php.ini:ro,cached
-      - ./conf/php/php-fpm.d/www72.conf:/usr/local/etc/php-fpm.d/www.conf:rw,cached
-      - ./log/php-fpm/:/var/log/php-fpm/:rw,cached
-    networks:
-      docker_net:
-        ipv4_address: ${PHP72_IP}
-
-  php56:
-    build: ./php/php56/
-    expose:
-      - "9000"
-    volumes:
-      - ${WORKSPACES}:/var/www/html/:rw,cached
-      - ./conf/php/php56.ini:/usr/local/etc/php/php.ini:ro,cached
-      - ./conf/php/php-fpm.d/www56.conf:/usr/local/etc/php-fpm.d/www.conf:rw,cached
-      - ./log/php-fpm/:/var/log/php-fpm/:rw,cached
-    networks:
-      docker_net:
-        ipv4_address: ${PHP56_IP}
-
+#  nginx:
+#    image: nginx:alpine
+#    ports:
+#      - "80:80"
+#      - "8080:8080"
+#      - "443:443"
+#    volumes:
+#      - ${WORKSPACES}:/var/www/html/:rw,cached
+#      - ./conf/nginx/conf.d:/etc/nginx/conf.d/:ro,cached
+#      - ./conf/nginx/nginx.conf:/etc/nginx/nginx.conf:ro,cached
+#      - ./log/nginx/:/var/log/nginx/:rw,cached
+#    links:
+#      - php72:fpm72
+#      - php56:fpm56
+#    environment:
+#      - TZ=Asia/Shanghai
+#  php72:
+#    build: ./php/php72/
+#    expose:
+#      - "9000"
+#    volumes:
+#      - ${WORKSPACES}:/var/www/html/:rw,cached
+#      - ./conf/php/php72.ini:/usr/local/etc/php/php.ini:ro,cached
+#      - ./conf/php/php-fpm.d/www72.conf:/usr/local/etc/php-fpm.d/www.conf:rw,cached
+#      - ./log/php-fpm/:/var/log/php-fpm/:rw,cached
+#
+#  php56:
+#    build: ./php/php56/
+#    expose:
+#      - "9000"
+#    volumes:
+#      - ${WORKSPACES}:/var/www/html/:rw,cached
+#      - ./conf/php/php56.ini:/usr/local/etc/php/php.ini:ro,cached
+#      - ./conf/php/php-fpm.d/www56.conf:/usr/local/etc/php-fpm.d/www.conf:rw,cached
+#      - ./log/php-fpm/:/var/log/php-fpm/:rw,cached
 #  mysql:
 #    image: mysql:5.6
 #    ports:
@@ -77,34 +66,14 @@ services:
       MYSQL_DATABASE: 'db'
       MYSQL_USER: 'user'
       MYSQL_PASSWORD: 'pass'
-    networks:
-      docker_net:
-        ipv4_address: ${MYSQL8_IP}
-
   redis:
     image: redis:latest
     ports:
       - "6379:6379"
-    networks:
-      docker_net:
-        ipv4_address: ${REDIS_IP}
-
-  portainer:
-    image: portainer/portainer:latest
-    ports:
-      - "9000:9000"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:cached
-      - ./portainer/:/data:cached
-    networks:
-      docker_net:
-        ipv4_address: ${PORTAINER_IP}
-
-networks:
-  docker_net:
-    driver: bridge
-    ipam:
-      driver: default
-      config:
-        -
-          subnet: "${DOCKER_SUBNET}"
+#  portainer:
+#    image: portainer/portainer:latest
+#    ports:
+#      - "9000:9000"
+#    volumes:
+#      - /var/run/docker.sock:/var/run/docker.sock:cached
+#      - ./portainer/:/data:cached

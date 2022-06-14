@@ -19,14 +19,15 @@ services:
     ports:
       - 8088:8080
     environment:
-      - SW_OAP_ADDRESS=http://192.168.83.196:12800
+      - SW_OAP_ADDRESS=http://oap:12800
       - TZ=Asia/Shanghai
   skywalking-php1:
     image: skyapm/skywalking-php:v4.2.0-7.4-fpm-alpine
     container_name: agent-php1
     volumes:
-      - ./skywalking-php/php.ini:/usr/local/etc/php/conf.d/ext-skywalking.ini
-      - ./skywalking-php/index.php:/var/www/html/index.php
+      - ./skywalking-php1/php.ini:/usr/local/etc/php/conf.d/ext-skywalking.ini
+      - ./skywalking-php1/index.php:/var/www/html/index.php
+      - ./skywalking-php1/tmp/:/tmp/
     depends_on:
       - oap
     links:
@@ -39,8 +40,9 @@ services:
     image: skyapm/skywalking-php:v4.2.0-7.4-fpm-alpine
     container_name: agent-php2
     volumes:
-      - ./skywalking-php1/php.ini:/usr/local/etc/php/conf.d/ext-skywalking.ini
-      - ./skywalking-php1/index.php:/var/www/html/index.php
+      - ./skywalking-php2/php.ini:/usr/local/etc/php/conf.d/ext-skywalking.ini
+      - ./skywalking-php2/index.php:/var/www/html/index.php
+      - ./skywalking-php2/tmp/:/tmp/
     depends_on:
       - oap
     links:
