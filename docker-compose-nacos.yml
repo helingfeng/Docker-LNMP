@@ -1,0 +1,8 @@
+version: "3"
+services:
+  nacos:
+    image: zhusaidong/nacos-server-m1:2.0.3
+    ports:
+      - "8848:8848"
+    environment:
+      MODE: standalone
