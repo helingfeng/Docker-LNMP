@@ -1,0 +1,45 @@
+FROM php:7.4.30-fpm-alpine3.15
+
+RUN set -ex \
+    && apk --update add --no-cache boost-dev git ca-certificates autoconf automake libtool g++ make file linux-headers file re2c pkgconf openssl openssl-dev curl-dev nginx
+
+
+ADD cmake-3.19.1.tar.gz /var/local/git/cmake
+ADD SkyAPM-php-sdk-4.2.0.tar.gz /var/local/git/SkyAPM
+ADD grpc.zip /var/local/git/grpc.zip
+
+RUN echo "--- clone grpc ---" \
+    && cd /var/local/git/ \
+    && unzip grpc.zip
+
+RUN cd /var/local/git/cmake/cmake-3.19.1 \
+    && ./bootstrap && make -j$(nproc) && make install
+
+RUN echo "--- installing grpc ---" \
+    && cd /var/local/git/grpc \
+    && ls -l \
+    && mkdir -p cmake/build && cd cmake/build && cmake ../.. \
+    && make -j$(nproc)
+
+RUN echo "--- installing skywalking php ---" \
+    && cd /var/local/git/SkyAPM/SkyAPM-php-sdk-4.2.0 \
+    && phpize && ./configure --with-grpc=/var/local/git/grpc && make && make install
+
+RUN printf "no\nyes\nyes\nno\n" | pecl install https://pecl.php.net/get/swoole-4.8.11.tgz \
+    && docker-php-ext-enable swoole
+
+RUN pecl install redis \
+    && docker-php-ext-enable redis
+
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer
+
+RUN cd /var/www/html/ \
+    && composer create-project hyperf/hyperf-skeleton
+
+RUN docker-php-ext-install pcntl
+
+EXPOSE 9501
+#EXPOSE 9000
+#
+CMD ["php", "/var/www/html/hyperf-skeleton/bin/hyperf.php", "start"]
+#CMD php-fpm

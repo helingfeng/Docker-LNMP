@@ -21,33 +21,49 @@ services:
     environment:
       - SW_OAP_ADDRESS=http://oap:12800
       - TZ=Asia/Shanghai
-  skywalking-php1:
-    image: skyapm/skywalking-php:v4.2.0-7.4-fpm-alpine
-    container_name: agent-php1
+  skywalking-php:
+    image: skywalking-php
+    container_name: agent-php
     volumes:
-      - ./skywalking-php1/php.ini:/usr/local/etc/php/conf.d/ext-skywalking.ini
-      - ./skywalking-php1/index.php:/var/www/html/index.php
-      - ./skywalking-php1/tmp/:/tmp/
+      - ./skywalking-php/ext-skywalking.ini:/usr/local/etc/php/conf.d/ext-skywalking.ini
+      - ./skywalking-php/docker-php-ext-swoole.ini:/usr/local/etc/php/conf.d/docker-php-ext-swoole.ini
+      - ./skywalking-php/tmp/:/tmp/
+      - ./www/hyperf-skeleton/:/var/www/html/hyperf-skeleton
     depends_on:
       - oap
     links:
       - oap
     ports:
-      - 8010:8080
+      - 9501:9501
     environment:
       - SW_OAP_ADDRESS=oap:11800
-  skywalking-php2:
-    image: skyapm/skywalking-php:v4.2.0-7.4-fpm-alpine
-    container_name: agent-php2
-    volumes:
-      - ./skywalking-php2/php.ini:/usr/local/etc/php/conf.d/ext-skywalking.ini
-      - ./skywalking-php2/index.php:/var/www/html/index.php
-      - ./skywalking-php2/tmp/:/tmp/
-    depends_on:
-      - oap
-    links:
-      - oap
-    ports:
-      - 8011:8080
-    environment:
-      - SW_OAP_ADDRESS=oap:11800
+#  skywalking-php1:
+#    image: skyapm/skywalking-php:v4.2.0-7.4-fpm-alpine
+#    container_name: agent-php1
+#    volumes:
+#      - ./skywalking-php1/ext-skywalking.ini:/usr/local/etc/php/conf.d/ext-skywalking.ini
+#      - ./skywalking-php1/index.php:/var/www/html/index.php
+#      - ./skywalking-php1/tmp/:/tmp/
+#    depends_on:
+#      - oap
+#    links:
+#      - oap
+#    ports:
+#      - 8010:8080
+#    environment:
+#      - SW_OAP_ADDRESS=oap:11800
+#  skywalking-php2:
+#    image: skyapm/skywalking-php:v4.2.0-7.4-fpm-alpine
+#    container_name: agent-php2
+#    volumes:
+#      - ./skywalking-php2/ext-skywalking.ini:/usr/local/etc/php/conf.d/ext-skywalking.ini
+#      - ./skywalking-php2/index.php:/var/www/html/index.php
+#      - ./skywalking-php2/tmp/:/tmp/
+#    depends_on:
+#      - oap
+#    links:
+#      - oap
+#    ports:
+#      - 8011:8080
+#    environment:
+#      - SW_OAP_ADDRESS=oap:11800

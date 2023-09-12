@@ -115,7 +115,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ 
 
 RUN apt-get install -y git
 
-RUN pecl install redis-5.3.1 \
+RUN pecl install redis \
     && docker-php-ext-enable redis
 
 RUN apt-get install -y supervisor
