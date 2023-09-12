@@ -4,3 +4,5 @@
 .idea
 .svn
 *.log
+*.cachefile
+*.cacheid
